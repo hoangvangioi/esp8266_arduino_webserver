@@ -25,6 +25,4 @@ urlpatterns = [
 
     path('water/', WaterSensorListData.as_view()),
     path('water/<int:pk>/', WaterSensorDataDetail.as_view()),
-    
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
 ]
