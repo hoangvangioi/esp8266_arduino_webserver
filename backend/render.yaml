@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: iot-backend
+    env: python
+    region: singapore
+    plan: free
+    branch: main
+    healthCheckPath: /
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn base.wsgi:application --log-file -"
+    autoDeploy: true
