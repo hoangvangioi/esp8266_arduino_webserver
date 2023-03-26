@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from dotenv import load_dotenv
 import dj_database_url
+from distutils.util import strtobool
 from corsheaders.defaults import default_headers
 
 
@@ -142,10 +143,28 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+CSRF_TRUSTED_ORIGINS = [os.getenv('CSRF_TRUSTED_ORIGINS')]
+
+CSRF_COOKIE_DOMAIN = os.getenv('CSRF_COOKIE_DOMAIN')
+
+CORS_ORIGIN_WHITELIST = os.getenv('CORS_ORIGIN_WHITELIST')
+
+# SSL
+SESSION_COOKIE_SECURE = bool(strtobool(os.getenv('SESSION_COOKIE_SECURE', 'True')))
+CSRF_COOKIE_SECURE = bool(strtobool(os.getenv('CSRF_COOKIE_SECURE', 'True')))
+SECURE_SSL_REDIRECT = bool(strtobool(os.getenv('SECURE_SSL_REDIRECT', 'True')))
+LANGUAGE_COOKIE_HTTPONLY = bool(strtobool(os.getenv('LANGUAGE_COOKIE_HTTPONLY', 'True')))
+SESSION_COOKIE_HTTPONLY = bool(strtobool(os.getenv('SESSION_COOKIE_HTTPONLY', 'True')))
+CSRF_COOKIE_HTTPONLY = bool(strtobool(os.getenv('CSRF_COOKIE_HTTPONLY', 'True')))
+SECURE_HSTS_PRELOAD = bool(strtobool(os.getenv('SECURE_HSTS_PRELOAD', 'True')))
+SECURE_HSTS_SECONDS = int(os.getenv('SECURE_HSTS_SECONDS', 31536000))
+
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_HEADERS = True
-
+CORS_REPLACE_HTTPS_REFERER = True
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
