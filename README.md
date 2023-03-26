@@ -1,6 +1,6 @@
 ### Circuit Diagram
 
-![Circuit Diagram](circuit_diagram\diagram.jpg "Circuit Diagram with Frizing")
+![Circuit Diagram](/circuit_diagram/diagram.jpg "Circuit Diagram with Frizing")
 
 ### ESP8266 NodeMCU
 - 
