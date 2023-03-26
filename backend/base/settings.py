@@ -88,20 +88,8 @@ WSGI_APPLICATION = 'base.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DATABASES_NAME'),
-            'USER': os.getenv('DATABASES_USER'),
-            'PASSWORD': os.getenv('DATABASES_PASSWORD'),
-            'HOST': os.getenv('DATABASES_HOST'),
-            'PORT': 5432,
-        }
-    }
-else:
-    DATABASES = {}
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # Password validation
